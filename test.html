@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Drag and Drop Example - Time to Hack</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="//time2hack.com/favicon.png" type="image/png">
+    <link rel="icon" href="//time2hack.com/favicon.png" type="image/png">
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+    .draggable {
+      border: 1px solid black;
+      width: 30px;
+      float: left;
+      margin-right: 5px;
+      padding: 5px;
+    }
+    #target {
+      border: 1px solid black;
+      width: 150px;
+      height: 100px;
+      padding: 5px;
+    }
+    </style>
+    <script>
+      function allowDrop(ev) { 
+          ev.preventDefault();
+      }
+
+      function drag(ev) {
+          ev.dataTransfer.setData("text", ev.target.id);
+      }
+
+      function drop(ev) {
+          ev.preventDefault();
+          var data = ev.dataTransfer.getData("text");
+          ev.target.appendChild(document.getElementById(data));
+      }
+      window.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('.draggables').addEventListener('dragstart', drag)
+      })
+    </script>
+  </head>
+  <body>
+    <div id="app" class="container">
+      <h1>Drag and Drop</h1>
+
+      <h2>Target</h2>
+      <div id="target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+      <h2>Draggable Elements</h2>
+      <div class="draggables">
+        <div id="draggable1" class="draggable" draggable="true" >1</div>
+        <div id="draggable2" class="draggable" draggable="true" >2</div>
+        <div id="draggable3" class="draggable" draggable="true" >3</div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,6 +1,19 @@
-.dropzone {
+.dropzone,
+.file-dropzone {
   border-style: dashed !important;
 }
 .solid-border {
   border-style: solid !important;
+  border-color: #aaa !important;
+}
+.solid-border .text-muted {
+  color: #aaa !important;
+}
+.card .card-body{
+  font-size: 0.9em;
+}
+.img-preview {
+  height: 150px;
+  width: auto;
+  margin: 0.25em;
 }
